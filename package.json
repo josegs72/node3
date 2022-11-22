@@ -1,0 +1,23 @@
+{
+  "name": "money-heist",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "start:live": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "populate:characters": "node ./utils/seeds/characters.seed.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mongoose": "^6.7.2"
+  }
+}
