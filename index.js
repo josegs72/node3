@@ -4,6 +4,9 @@ const connect = require('./utils/db/connect.js');
 const cors = require('cors');
 const createError = require('./utils/errors/create-error.js');
 const locationsRouter = require('./routes/locations.routes.js');
+const passport = require('passport');
+const userRouter = require('./routes/user.routes.js');
+const session = require('express-session');
 
 // Me conecta a la base de datos.
 connect();
@@ -18,8 +21,29 @@ server.use(express.json());
 // Nos permite parsear los body de las peticiones POST y PUT que vienen como string o array
 server.use(express.urlencoded({ extended: false }));
 
-server.use('/characters', charactersRouter);
+// Inicializar y configurar passport
+// Ejecuta el archivo de passport
+require('./utils/authentication/passport.js');
 
+// Creamos gestión de sesiones
+// Recibe config de la sesión
+server.use(session({
+    secret: 'hola_mundo',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        maxAge: 60000 // Milisegundos hasta que la cookie caduca
+    }
+}));
+
+// Inicializa passport
+server.use(passport.initialize());
+// Utilizamos la sesión con passport
+server.use(passport.session());
+
+// Rutas
+server.use('/user', userRouter);
+server.use('/characters', charactersRouter);
 server.use('/locations', locationsRouter);
 
 // * --> Cualquier ruta que no haya sido identificada en los anteriores server use entrará por aquí
