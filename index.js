@@ -11,7 +11,7 @@ const session = require('express-session');
 // Me conecta a la base de datos.
 connect();
 
-const PORT = 4000;
+const PORT = 3000;
 const server = express();
 
 // Evita errores de CORS, instalar antes la dependencia cors --> npm install --save cors

@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const Character = require('../../models/Characters.js');
 const fs = require('fs');
 
-const DB_URL = "mongodb+srv://root:GKNM0qCJZ5Sjz7uN@moneyheist.8rg8c8y.mongodb.net/?retryWrites=true&w=majority";
+const DB_URL = "mongodb+srv://root:FxpjXX44HoZDpmP6@cluster0.jqruqhx.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose.connect(DB_URL, {
     useNewUrlParser: true,
